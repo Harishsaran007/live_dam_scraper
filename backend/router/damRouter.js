@@ -106,6 +106,12 @@ router.put('/', async(req,res)=>{
             r && r.damName && r.damName.trim().toLowerCase() === name.toLowerCase()
         );
 
+        const cleanNumber = (val) => {
+            return (val === '--' || val === '-' || val === '' || isNaN(Number(val)))
+                ? 0
+                : Number(val.toString().replace(/,/g, ''));
+        };
+
         const updatedDam = await dam.findOneAndUpdate(
             {damName: name, userId},
             {
@@ -114,8 +120,8 @@ router.put('/', async(req,res)=>{
                 fullCapacity:record.fullCapacity,
                 currentWaterLevel: record.currentWaterLevel,
                 currentStorageVolume:record.currentStorageVolume,
-                inflow:record.inflow,
-                outflow:record.outflow,
+                inflow:cleanNumber(record.inflow),
+                outflow:cleanNumber(record.outflow),
                 date:record.date
             }
         );

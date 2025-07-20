@@ -120,13 +120,14 @@ const Main = () => {
 		<div className={styles.main_container}>
 			<nav className={styles.navbar}>
 				<h1>{tamil ? "அணைகள் நீர்மட்டம்" : "Dam Water Level"}</h1>
-			
+				<div>
 				<button className={styles.white_btn} onClick={toggleLanguage}>
            			{tamil ? 'English' : 'தமிழ்'}
         		</button>
 				<button className={styles.white_btn} onClick={handleLogout}>
 					Logout
 				</button>
+				</div>
 				</nav>
 
 				<AddDams onSubmit={handleSubmit} tamil={tamil} />

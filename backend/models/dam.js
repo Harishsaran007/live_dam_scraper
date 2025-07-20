@@ -9,8 +9,6 @@ const damSchema = new mongoose.Schema({
     inflow: Number,
     outflow: Number,
     date: String,
-
-    // 👇 Add this line to link dam with a specific user
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user',
