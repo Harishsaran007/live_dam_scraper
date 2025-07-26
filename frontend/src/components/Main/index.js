@@ -22,7 +22,7 @@ const Main = () => {
     	  return;
     	}
 
-    	const res = await axios.get("http://localhost:5000/ourdams", {
+    	const res = await axios.get("https://live-dam-scraper.onrender.com/ourdams", {
     	  headers: {
     	    "x-auth-token": token
       	}
@@ -46,7 +46,7 @@ const Main = () => {
     	  return;
     	}
 
-    	await axios.delete(`http://localhost:5000/ourdams/${id}`, {
+    	await axios.delete(`https://live-dam-scraper.onrender.com/ourdams/${id}`, {
     	  headers: {
     	    "x-auth-token": token
     	  }
@@ -70,7 +70,7 @@ const Main = () => {
     	  return;
     	}
 
-    	await axios.post("http://localhost:5000/ourdams", { name }, {
+    	await axios.post("https://live-dam-scraper.onrender.com/ourdams", { name }, {
     	  headers: {
     	    "x-auth-token": token
     	  }
@@ -95,7 +95,7 @@ const Main = () => {
     	  return;
     	}
 
-    	await axios.put("http://localhost:5000/ourdams", { name }, {
+    	await axios.put("https://live-dam-scraper.onrender.com/ourdams", { name }, {
     	  headers: {
     	    "x-auth-token": token
     	  }
