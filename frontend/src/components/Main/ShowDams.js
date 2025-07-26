@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import { FaTrashAlt } from "react-icons/fa";
 import './ShowDams.css';
 import { FiRefreshCw } from "react-icons/fi";
@@ -6,7 +6,7 @@ import {BsFillVolumeUpFill} from "react-icons/bs";
 
 
 const ShowDams = ({Dams, handleDelete, refresh, tamil}) => {
-  const [tilt,setTilt] = useState(0);
+  
   const [flippedCards, setFlippedCards] = useState({});
 
   const toggleFlip = (id) => {
@@ -51,20 +51,6 @@ const ShowDams = ({Dams, handleDelete, refresh, tamil}) => {
 };
 
 
-  useEffect(()=>{
-    const handleOrientation = (e) =>{
-      const gamma = e.gamma || 0;
-      setTilt(gamma);
-    };
-    window.addEventListener('deviceorientation',handleOrientation);
-
-    return ()=>{
-      window.removeEventListener('deviceorientation',handleOrientation);
-    };
-  },[]);
-
-
-
   const handleSpeak = (dam) => {
     const message = `
       ${tamil ? 'அணையின் பெயர்' : 'Dam Name'}: ${dam.damName}.
@@ -96,7 +82,7 @@ const ShowDams = ({Dams, handleDelete, refresh, tamil}) => {
                 <div className='flip-face flip-front'>
                   <div className={`video-wrapper ${s.currentWaterLevel >= s.fullDepth ? "full" : "not-full"}`} style={{
                     height: `${levelPercent}%`,
-                    transform: `rotateZ(${tilt * 0.3}deg)`
+                    
                   }}>
                     <video autoPlay muted loop playsInline>
                       <source src="/fish.mp4" type="video/mp4" />

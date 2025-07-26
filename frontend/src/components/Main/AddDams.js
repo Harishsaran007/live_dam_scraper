@@ -18,7 +18,7 @@ const AddDams = ({onSubmit, tamil}) => {
     useEffect(()=>{
       const delaySearch = setTimeout(()=>{
         if (name.trim()!==''){
-          axios.get(`http://localhost:5000/ourdams/search?q=${name}`)
+          axios.get(`https://live-dam-scraper.onrender.com/ourdams/search?q=${name}`)
             .then(res=> setSuggestions(res.data))
             .catch(err => console.error('search error:',err));
         }else{

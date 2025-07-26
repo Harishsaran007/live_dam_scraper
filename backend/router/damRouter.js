@@ -30,7 +30,10 @@ router.post('/', async (req, res)=>{
 
     try{
 
-        const existingDam = await dam.findOne({ damName: { $regex: new RegExp(`^${damName}$`, 'i') } });
+        const existingDam = await dam.findOne({
+            damName: { $regex: new RegExp(`^${damName}$`, 'i') },
+            userId: req.body.userId
+        });
         if (existingDam) {
             return res.status(409).json({ message: `Dam "${damName}" already exists.` });
         }
